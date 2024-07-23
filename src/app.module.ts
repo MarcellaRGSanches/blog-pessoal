@@ -7,7 +7,7 @@ import { PostagemModule } from './postagem/postagem.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
+    TypeOrmModule.forRoot({  //Cria a conexão padrão/raiz
       type: 'mysql',
       host: 'localhost',
       port: 3306,
@@ -16,8 +16,9 @@ import { PostagemModule } from './postagem/postagem.module';
       database: 'db_blogpessoal',
       entities: [Postagem],
       synchronize: true,
+      logging: true,
     }),
-    PostagemModule
+    PostagemModule //classe que vai definir o recurso 
   ],
   controllers: [],
   providers: [],
