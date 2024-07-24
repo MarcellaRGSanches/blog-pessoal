@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+// import { AppController } from './app.controller';
+// import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Postagem } from './postagem/entities/postagem.entity';
 import { PostagemModule } from './postagem/postagem.module';
+import { TemaModule } from './tema/tema.module';
+import { Tema } from './tema/entities/tema.entity';
+
 
 @Module({
   imports: [
@@ -14,13 +17,14 @@ import { PostagemModule } from './postagem/postagem.module';
       username: 'root',
       password: 'root123',
       database: 'db_blogpessoal',
-      entities: [Postagem],
+      entities: [Postagem, Tema],
       synchronize: true,
       logging: true,
     }),
-    PostagemModule //classe que vai definir o recurso 
+    PostagemModule, //classe que vai definir o recurso 
+    TemaModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
